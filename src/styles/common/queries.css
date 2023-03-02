@@ -1,0 +1,27 @@
+/* 336px */
+@custom-media --viewport-3xs (width >= 21rem);
+/* 580px */
+@custom-media --viewport-2xs (width >= 36.25rem);
+/* 700px */
+@custom-media --viewport-xs (width >= 43.75rem);
+/* 880px */
+@custom-media --viewport-sm (width >= 55rem);
+/* 1000px */
+@custom-media --viewport-md (width >= 62.5rem);
+@custom-media --viewport-md-below (width <= 62.5rem);
+/* 1240px */
+@custom-media --viewport-lg (width >= 77.5rem);
+/* 1480px */
+@custom-media --viewport-xl (width >= 92.50rem);
+/* 1800px */
+@custom-media --viewport-2xl (width >= 122.5rem);
+
+@custom-media --dark (prefers-color-scheme: dark);
+@custom-media --light (prefers-color-scheme: light);
+
+@custom-media --motion (prefers-reduced-motion: no-preference);
+
+@custom-media --no-motion (prefers-reduced-motion: reduce);
+
+
+@custom-media --mouse (pointer: fine);

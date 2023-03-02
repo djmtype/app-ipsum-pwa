@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+
+
+---
+
+<BaseLayout
+	title="404 Error"
+	description="This is an error page"
+	bodyClass="sea"
+	indexPage={false}
+>
+<div class="wrapper flow">
+	<h1>404</h1>
+	<p class="font-size-lg">This page does not exist.</p>
+	<p>You landed here due to some sort of  errorrrrrrr&hellip;</p>
+
+	<p><a href="/">← Take me back home</a></p>
+</div>
+</BaseLayout>
+
+
+<style>
+	h1 {
+		font-size: var(--font-size-3xl);
+	}
+	.wrapper a {
+		background-color: var(--color-foreground);
+		filter: contrast(1);
+		display: inline-flex;
+		width: auto;
+		border-radius: var(--border-radius-pill);
+		padding: var(--space-2xs) var(--space-sm);
+	}
+</style>

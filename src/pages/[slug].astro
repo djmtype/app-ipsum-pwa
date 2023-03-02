@@ -1,0 +1,64 @@
+---
+import "@styles/layout/layout-global.css";
+import BaseLayout from "@layouts/BaseLayout.astro"
+
+import LayoutAlpha from "@components/LayoutAlpha.astro"
+
+import LayoutBeta from "@components/LayoutBeta.astro"
+
+import { getCollection, CollectionEntry } from "astro:content"
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+	const entries = await getCollection("md")
+	return entries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { 
+      entry, 
+      layoutStyle: entry.data.layoutStyle
+    },
+	}))
+}
+
+
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry, layoutStyle } = Astro.props
+const { Content } = await entry.render()
+
+---
+
+<BaseLayout
+	title={entry.data.title}
+	description={entry.data.description}
+	image={entry.data.image[0]}
+	bodyClass={entry.data.bodyAttrs.className}
+>
+
+
+
+	{
+		layoutStyle === "alpha" && (
+			<LayoutAlpha 
+				title={entry.data.title}
+				eyeline={entry.data.eyeline}
+				tags={entry.data.tags}
+				image={entry.data.image}
+				boxNumber={entry.data.number}>
+				<Content />
+			</LayoutAlpha>
+		) 
+	}
+
+{
+  layoutStyle !== "alpha" && (
+    <LayoutBeta
+      title={entry.data.title}
+      eyeline={entry.data.eyeline}
+      tags={entry.data.tags}
+      image={entry.data.image}
+      boxNumber={entry.data.number}>
+      <Content />
+    </LayoutBeta>
+  )
+}
+</BaseLayout>

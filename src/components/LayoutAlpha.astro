@@ -1,0 +1,285 @@
+---
+import NumberBox from "@components/NumberBox.astro"
+import { Img } from "astro-imagetools/components";
+
+type Props = {
+	title: string
+	eyeline: string
+	tags: string[]
+	image: string[]
+	boxNumber?: string
+}
+
+
+const { title, eyeline, tags, image = '', boxNumber } = Astro.props as Props
+---
+
+
+	<div class="wrapper grid-lg">
+		<div class="grid-lg__col-left">
+			<div class="grid-sm grid-sm--left block-effect">
+				<figure class="block-reveal">
+					<Img
+						objectFit="cover"
+						placeholder="dominantColor"
+						layout="fill"
+						loading="eager"
+						decoding="sync"
+						quality="60"
+						format="webp"
+						alt=""
+						width="320"
+						height="480"
+						src={image[0]}
+						attributes={{
+							img: {
+								class: "image-0",
+								fetchpriority: "high"
+							}
+						}}
+					/>
+				</figure>
+				<figure class="block-reveal">
+					<Img
+						objectFit="cover"
+						placeholder="dominantColor"
+						layout="fill"
+						quality="60"
+						format="webp"
+						alt=""
+						width="320"
+						height="480"
+						src={image[1]}
+						attributes={{
+							img: {
+								class: "image-1"
+							}
+						}}
+					/>
+				</figure>
+				<figure class="block-reveal">
+					<Img
+						objectFit="cover"
+						placeholder="dominantColor"
+						layout="fill"
+						quality="60"
+						format="webp"
+						alt=""
+						width="320"
+						height="480"
+						src={image[2]}
+						attributes={{
+							img: {
+								class: "image-2"
+							}
+						}}
+					/>
+				</figure>
+				<figure class="block-reveal">
+					<Img
+						objectFit="cover"
+						placeholder="dominantColor"
+						layout="fill"
+						quality="60"
+						format="webp"
+						alt=""
+						width="320"
+						height="480"
+						src={image[3]}
+						attributes={{
+							img: {
+								class: "image-3"
+							}
+						}}
+					/>
+				</figure>
+			</div>
+		</div>
+		<div class="grid-lg__number scale-in">
+			<NumberBox boxNumber={boxNumber} />
+		</div>
+		<div class="grid-lg__summary flow">
+			<p class="entry__eyeline">{eyeline}</p>
+			<h1 class="entry__title flow-space-2xs">{title}</h1>
+
+				<slot />
+	
+
+				{tags.length >= 0 && (
+			<ul class="entry__meta" role="list">
+				{tags.map((tag) => (
+						<li>{tag}</li>
+				))}
+			</ul>
+			)}
+		</div>
+
+		<div class="grid-lg__col-right">
+			<div class="grid-sm grid-sm--right block-effect">
+				<figure class="block-reveal">
+					<Img
+						objectFit="cover"
+						placeholder="dominantColor"
+						layout="fill"
+						quality="60"
+						format="webp"
+						alt=""
+						width="320"
+						height="480"
+						src={image[3]}
+						attributes={{
+							img: {
+								class: "image-5"
+							}
+						}}
+					/>
+				</figure>
+			</div>
+		</div>
+	</div>
+
+
+
+<style>
+
+.grid-lg {
+	display: grid;
+	row-gap: var(--gutter);
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, min-content);
+	grid-auto-flow: row;
+}
+
+.grid-lg__col-left {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.grid-lg__summary {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.grid-lg__number {
+	justify-self: center;
+	align-self: center;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.grid-lg__col-right {
+	display: none;
+}
+
+.grid-sm--left {
+	display: grid;
+	gap: var(--space-xs);
+	grid-template-rows: repeat(8, min(8vw, 4rem));
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.grid-sm--left *:first-child {
+	grid-column: 1 / 5;
+	grid-row: 1 / span 5;
+}
+
+.grid-sm--left *:nth-child(2) {
+	grid-column: 5/9;
+	grid-row: 1 / span 3;
+	aspect-ratio: 1/1;
+}
+
+.grid-sm--left *:nth-child(3) {
+	grid-column: 2 / span 3;
+	grid-row: 6 / span 3;
+}
+
+.grid-sm--left *:nth-child(4) {
+	grid-column: 5/8;
+	grid-row: 4 / span 5;
+}
+
+@media (--viewport-md) {
+	.grid-sm {
+		display: grid;
+		gap: var(--space-2xs);
+	}
+
+	.grid-lg {
+		grid-template-columns: repeat(14, minmax(0, 1fr));
+		grid-template-rows: repeat(2, min-content);
+	}
+
+	.grid-lg__col-left {
+		grid-column: 1/6;
+		grid-row: 1/-1;
+	}
+
+	.grid-lg__number {
+		grid-row: 1;
+		grid-column: 6/11;
+		align-self: end;
+	}
+
+	.grid-lg__summary {
+		grid-row: 2;
+		grid-column: 6/11;
+		align-self: start;
+	}
+
+	.grid-lg__col-right {
+		grid-column: 11/-1;
+		grid-row: 1/-1;
+		display: grid;
+	}
+
+	.grid-lg__number {
+		justify-self: unset;
+	}
+}
+
+@media (--viewport-md) {
+	.grid-sm {
+		grid-template-rows: repeat(10, minmax(5vh, 60px));
+		grid-template-columns: repeat(8, minmax(0, 1fr));
+	}
+
+	.grid-sm--left *:first-child {
+		grid-column: 1 / span 4;
+		grid-row: 1 / span 8;
+		
+	}
+
+	.grid-sm--left *:nth-child(2) {
+		grid-column: 5 / span 3;
+		grid-row: 2 / span 6;
+		aspect-ratio: unset;
+	}
+
+	.grid-sm--left *:nth-child(3) {
+		grid-column: 2 / span 3;
+		grid-row: 9 / span 3;
+	}
+
+	.grid-sm--left *:nth-child(4) {
+		display: none;
+	}
+
+	.grid-sm--right *:first-child {
+		grid-column: 2 / -1;
+		grid-row: 3 / 10;
+	}
+
+
+}
+
+
+/* @media (--viewport-md) {
+.image-0, .image-1, .image-2, .image-3, .image-5 {
+	height: 100%;
+}
+} */
+
+
+
+	</style>

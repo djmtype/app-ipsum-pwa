@@ -1,0 +1,69 @@
+---
+import NavLink from "@components/NavLink.astro"
+const links = [
+	{
+		name: "Ocean",
+		link: "/",
+	},
+	{
+		name: "Savanna",
+		link: "/savanna",
+	},
+	{
+		name: "Rainforest",
+		link: "/rainforest",
+	},
+]
+---
+
+<nav class='primary-nav' id="main-navigation">
+	<ul class='primary-nav__list' role='list'>
+		{
+			links.map((i) => (
+				<li class='primary-nav__item'>
+					<NavLink className='primary-nav__link' href={i.link}>
+						{i.name}
+					</NavLink>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style is:global>
+	nav {
+		width: min(20rem, 100%);
+	}
+	nav ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	nav ul > li {
+		flex: 1 0 max-content;
+	}
+
+	a {
+		padding-inline: var(--space-2xs);
+		color: var(--bg-color);
+		filter: contrast(0.375);
+		text-align: center;
+		width: 100%;
+		display: block;
+
+		&:hover,
+		&:focus-visible {
+			filter: contrast(0.15);
+		}
+	}
+
+	a[aria-current="page"] {
+		font-weight: var(--font-weight-bold);
+		filter: contrast(0.15);
+		text-decoration: none;
+		cursor: default;
+		text-decoration: underline;
+		text-decoration-thickness: 0.125em;
+		text-underline-offset: 0.2em;
+	}
+</style>

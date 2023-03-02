@@ -1,0 +1,89 @@
+---
+import { pwaInfo } from 'virtual:pwa-info';
+import "@fontsource/fraunces/700.css"
+
+import fraunces700 from "@fontsource/fraunces/files/fraunces-latin-700-normal.woff2"
+
+import "@styles/app.css"
+
+
+import { siteMeta } from "../site.config"
+
+export interface Props {
+	title: string
+	description: string
+	image?: string
+	path?: any
+	robots?: boolean
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+const {
+	title,
+	description,
+	robots = true,
+	image = siteMeta.image,
+	path = Astro.url.pathname,
+} = Astro.props as Props
+---
+
+<!-- Global Metadata -->
+<meta charset='utf-8' />
+
+<link rel="preload" as="font" href={fraunces700} type="font/woff2" crossorigin="anonymous" />
+
+<meta name='viewport' content='width=device-width,initial-scale=1' />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/pwa-192x192.png" />
+<link rel="mask-icon" href="/favicon.svg" color="#FFFFFF" />
+
+<meta name="theme-color" content="#ffffff" />
+
+
+
+<meta name='generator' content={Astro.generator} />
+<!-- Canonical URL -->
+<link rel='canonical' href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>
+	{
+		title
+			? title + " / " + siteMeta.title
+			: siteMeta.title + " / " + siteMeta.subtitle
+	}
+</title>
+
+<meta name='title' content={title} />
+<meta name='description' content={description} />
+
+<meta name='theme-color' content='Canvas' />
+<!-- <meta name='color-scheme' content='dark light' /> -->
+<link rel="sitemap" href="/sitemap-index.xml">
+<!-- Open Graph / Facebook -->
+<meta property='og:type' content='website' />
+<meta property='og:url' content={Astro.url} />
+<meta property='og:title' content={title} />
+<meta property='og:description' content={description} />
+<meta property='og:image' content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property='twitter:card' content='summary_large_image' />
+<meta property='twitter:url' content={Astro.url} />
+<meta property='twitter:title' content={title} />
+<meta property='twitter:description' content={description} />
+<meta property='twitter:image' content={new URL(image, Astro.url)} />
+
+
+<meta name="robots" content={robots === false ? 'none' : 'index,follow'}>
+
+
+
+<script src="/src/pwa.ts"></script>
+{ pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
+
+<script is:inline>
+	document.documentElement.classList.remove("no-js")
+</script>

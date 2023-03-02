@@ -1,0 +1,86 @@
+:root {
+	--color-foreground: #121212;
+
+	--font-family-heading: Fraunces, Georgia, serif;
+	--font-family-sans: system-ui, sans-serif;
+	--font-family-mono: SF Mono, ui-monospace, Menlo, Monaco, serif;
+	--line-height-body: 1.5;
+	--line-height-heading: calc(1em + 0.5rem);
+
+	--font-weight-400: 400;
+	--font-weight-500: 500;
+	--font-weight-600: 600;
+	--font-weight-700: 700;
+
+	--font-weight-normal: var(--font-weight-400);
+	--font-weight-bold: var(--font-weight-700);
+
+	--letter-spacing-tight: -0.025em;
+	--letter-spacing-normal: 0;
+	--letter-spacing-loose: 0.075em;
+
+	--text-uppercase: uppercase;
+	--text-capitalize: capitalize;
+}
+
+
+:root {
+--font-scale: 1.25;
+	--font-size-smaller: 90%;
+
+/* @link https://utopia.fyi/type/calculator?c=336,16,1.25,1480,20,1.333,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,&g=m,l,2xl,12 */
+
+
+  --font-size-xs: calc(var(--font-size-sm) / var(--font-scale));
+  --font-size-sm: 1rem;
+  --font-size-md: calc(var(--font-size-sm) * var(--font-scale));
+  --font-size-lg: calc(var(--font-size-md) * var(--font-scale));
+  --font-size-xl: calc(var(--font-size-lg) * var(--font-scale));
+  --font-size-2xl: calc(var(--font-size-xl) * var(--font-scale));
+  --font-size-3xl: calc(var(--font-size-2xl) * var(--font-scale));
+
+	--font-size-4xl: calc(var(--font-size-3xl) * var(--font-scale));
+	--font-size-5xl: calc(var(--font-size-4xl) * var(--font-scale));
+	--font-size-6xl: calc(var(--font-size-5xl) * var(--font-scale));
+
+}
+
+
+
+:root {
+
+	--space-scale: 1.25;
+	/* @link https://utopia.fyi/space/calculator?c=336,16,1.25,1480,20,1.333,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6|7,&g=m,l,2xl,12 */
+
+
+  --space-2xs: calc(var(--space-xs) / var(--space-scale));
+  --space-xs: calc(var(--space-sm) / var(--space-scale));
+  --space-sm: 1rem;
+  --space-md: calc(var(--space-sm) * var(--space-scale));
+  --space-lg: calc(var(--space-md) * var(--space-scale));
+  --space-xl: calc(var(--space-lg) * var(--space-scale));
+  --space-2xl: calc(var(--space-xl) * var(--space-scale));
+  --space-3xl: calc(var(--space-2xl) * var(--space-scale));
+	--space-4xl: calc(var(--space-3xl) * var(--space-scale));
+
+	--gutter: var(--space-lg);
+}
+
+
+
+
+:root {
+	--line-length-sm: 50ch;
+	--line-length-md: 60ch;
+	--line-length-lg: 70ch;
+}
+
+:root {
+	--border-size-none: 0;
+	--border-size-1: max(1px, 0.0625rem);
+	--border-size-2: max(2px, 0.125rem);
+
+	--border-radius-rounded: max(5px, 0.3125rem);
+	--border-radius-pill: 999em;
+	--border-radius-circle: 50%;
+}

@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: system-ui, sans-serif;
+}
+
+:where(body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd) {
+	margin: 0;
+}
+
+:where(ul, ol, hr, pre) {
+	margin-block: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+:where(ul[role="list"], ol[role="list"]) {
+	padding: 0;
+	margin: 0;
+}
+
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	height: 100%;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	min-height: 100vh;
+	/* text-rendering: optimizeSpeed; */
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+details {
+	cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

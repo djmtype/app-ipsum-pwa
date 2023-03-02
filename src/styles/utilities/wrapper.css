@@ -1,0 +1,18 @@
+:root {
+--size-span-xl: 1320px;
+}
+
+.wrapper {
+  width: min(100% - var(--gutter) * 2, var(--wrapper-max-width, var(--size-span-xl)));
+  margin-inline: auto;
+  /* padding-inline: var(--gutter); */
+  position: relative;
+}
+.wrapper-width-sm {
+  --wrapper-max-width: var(--size-span-sm);
+}
+
+.wrapper-width-md {
+  --wrapper-max-width: var(--size-span-md);
+}
+

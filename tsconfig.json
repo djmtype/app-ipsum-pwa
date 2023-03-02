@@ -1,0 +1,29 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@pages/*": ["src/pages/*"],
+			"@styles/*": ["src/styles/*"],
+			"@scripts/*": ["src/scripts/*"],
+			"@public/*": ["public/*"],
+			"@svg/*": ["public/images/svgs/*"],
+			"@data/*": ["src/data/*"],
+			"@utils/*": ["src/utils/*"],
+			"@images/*": ["src/images/*"],
+		}
+	},
+	"mdx": {
+    "plugins": [
+      [
+        "remark-frontmatter",
+        ["toml", "yaml"]
+      ],
+      "remark-gfm"
+    ]
+  }
+}

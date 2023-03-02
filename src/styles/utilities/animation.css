@@ -1,0 +1,119 @@
+:root {
+	--time: .4s;
+	--bc: #fff;
+}
+
+@media (--motion) {
+.block-reveal {
+	--alltime: calc(var(--time) + var(--delay, 0s));
+	color: transparent;
+	/* padding: 4px; */
+	position: relative;
+	overflow: hidden;
+	animation: revealBlock 0s var(--alltime) forwards;
+}
+
+.block-reveal::after {
+	content: '';
+	width: 0%;
+	height: 100%;
+	/* padding-bottom: 4px; */
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--bc);
+	animation: revealingIn var(--time) var(--delay, 0s) forwards,
+						 revealingOut var(--time) var(--alltime) forwards;
+}
+
+@keyframes contentReveal {
+	0% {
+		opacity: 0;
+}
+100% {
+		opacity: 1;
+}
+}
+
+@keyframes revealBlock {
+	100% {
+			color: var(--reveal-color, var(--bg-color));
+	}
+}
+
+@keyframes revealingIn {
+	0% {
+			width: 0;
+	}
+	100% {
+			width: 100%;
+	}
+}
+
+@keyframes revealingOut {
+	0% {
+			transform: translateX(0);
+	}
+	100% {
+			transform: translateX(100%);
+	}
+}
+
+.block-reveal > * {
+	opacity: 0;
+	animation-name: contentReveal;
+	animation-fill-mode: forwards;
+	animation-delay: calc(var(--time) + var(--delay, 0s));
+	animation-duration: var(--time);
+
+}
+
+
+.slide-in {
+	opacity: 0;
+	animation-name: slideIn;
+	animation-fill-mode: forwards;
+	animation-delay: .8s;
+	animation-duration: .5s;
+}
+
+.scale-in {
+	opacity: 0;
+	animation-name: scaleIn;
+	animation-fill-mode: forwards;
+	animation-delay: var(--delay, var(--time, 0s));
+	animation-duration: var(--time);
+	transform-origin: 0 bottom;
+}
+
+@keyframes scaleIn {
+	0% {
+			transform: scale(50%);
+			opacity: 0;
+	}
+
+	50% {
+		opacity: 100%;
+	}
+
+	100% {
+			transform: scale(1);
+			opacity: 100%;
+	}
+}
+
+
+@keyframes slideIn {
+	0% {
+			transform: translateY(20px);
+			opacity: 0;
+	}
+
+
+	100% {
+			transform: translateY(0px);
+			opacity: 100%;
+	}
+}
+
+}

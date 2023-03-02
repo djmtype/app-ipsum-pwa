@@ -1,0 +1,17 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+export interface Props {
+	rel?: any;
+	className?: string;
+}
+
+const { href, class: className, rel, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+
+const currentPage = Astro.url.pathname;
+---
+
+<a rel="prefetch" href={href} aria-current={isActive ? 'page' : null} class:list={[className, { 'primary-nav__link ': isActive, active: isActive }]} rel={rel} {...props}><slot /></a>
