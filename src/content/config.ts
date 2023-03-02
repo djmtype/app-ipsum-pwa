@@ -6,6 +6,7 @@ const md = defineCollection({
 		description: z.string().optional(),
 		eyeline: z.string(),
 		number: z.string(),
+		ogImage: z.string().optional(),
 		image: z.array(z.string().optional()).optional(),
 		tags: z.array(z.string().optional()).optional(),
 		layoutStyle: z.string(),

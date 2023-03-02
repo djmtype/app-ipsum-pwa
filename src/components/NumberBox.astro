@@ -22,6 +22,7 @@ const { boxNumber } = Astro.props as Props
 	.number-box {
 		position: relative;
 		width: min(35vw, 10rem);
+		height: min(35vw, 10rem);
 		display: grid;
 		place-content: center;
 		aspect-ratio: 1/1;
@@ -35,7 +36,7 @@ const { boxNumber } = Astro.props as Props
 	.number-box__wrapper {
 		display: grid;
 		align-items: baseline;
-		grid-template-columns: auto auto;
+		grid-template-columns: max-content max-content;
 	}
 	
 	
@@ -47,7 +48,7 @@ const { boxNumber } = Astro.props as Props
 		position: relative;
 		margin-left: -2ch;
 		font-weight: var(--font-weight-bold);
-	
+	align-self: end;
 	}
 	
 	.number-box__headline {

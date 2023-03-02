@@ -36,8 +36,7 @@ export default defineConfig({
         short_name: siteMeta.title,
         description: siteMeta.description,
         start_url: '/',
-        id: '/',
-        display: 'fullscreen',
+        display: 'standalone',
         theme_color: '#ffffff',
         icons: [
           {
