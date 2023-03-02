@@ -2,7 +2,7 @@ export const siteMeta = {
   title: "App Ipsum",
   subtitle: "One layout at a time",
   description: "A testing ground for all things PWA",
-  url: "https://appipsum.netlify.app",
+  url: "https://app-ipsum.netlify.app",
   image: "/images/social.png"
 }
 
